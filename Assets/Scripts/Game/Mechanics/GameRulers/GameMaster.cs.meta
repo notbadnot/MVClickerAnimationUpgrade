@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 5b0e8fbd3627faa48b32880598090660
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mainCam: {instanceID: 0}
+  - heartPrefab: {fileID: 2626717784318805984, guid: abef1c2ae2d996b49acac28909471ccf, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
