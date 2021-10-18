@@ -17,10 +17,14 @@ public class AlienScript : ShootableObject
       Возвращает очки за пришельца*/
     public override int GetShoted()
     {
-        rigidBody2.velocity = Vector2.down * 4;
-        rigidBody2.angularVelocity = 720 * Random.Range(-2f,2f);
-        dead = true;
-        return base.GetShoted();
+        if (!dead)
+        {
+            rigidBody2.velocity = Vector2.down * 4;
+            rigidBody2.angularVelocity = 720 * Random.Range(-2f, 2f);
+            dead = true;
+            return base.GetShoted();
+        }
+        return 0;
     }
     //Функция роста пришельца на скорость роста
     private void Grow()

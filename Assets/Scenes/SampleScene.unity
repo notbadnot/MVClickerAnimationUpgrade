@@ -147,6 +147,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2626717784318805984, guid: abef1c2ae2d996b49acac28909471ccf, type: 3}
     - target: {fileID: 824451769503087402, guid: 6e4168cf3321f4c4da45f146b89e476e, type: 3}
+      propertyPath: alienPrefab.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 824451769503087402, guid: 6e4168cf3321f4c4da45f146b89e476e, type: 3}
       propertyPath: allienPrefab.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -154,6 +158,18 @@ PrefabInstance:
       propertyPath: _allienPrefab.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 824451769503087402, guid: 6e4168cf3321f4c4da45f146b89e476e, type: 3}
+      propertyPath: alienPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 3004024144455662307, guid: 1f251b67ef42277408e4659aae35fa50, type: 3}
+    - target: {fileID: 824451769503087402, guid: 6e4168cf3321f4c4da45f146b89e476e, type: 3}
+      propertyPath: alienPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 3524823343931281564, guid: 2bd344e0b9c218f4f8a2d7c640184539, type: 3}
+    - target: {fileID: 824451769503087402, guid: 6e4168cf3321f4c4da45f146b89e476e, type: 3}
+      propertyPath: alienPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 7798150097083826596, guid: 8687f09373920a745b77e01a8737ab10, type: 3}
     - target: {fileID: 824451769503087402, guid: 6e4168cf3321f4c4da45f146b89e476e, type: 3}
       propertyPath: allienPrefab.Array.data[0]
       value: 
