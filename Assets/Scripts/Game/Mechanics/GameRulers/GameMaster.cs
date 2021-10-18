@@ -123,7 +123,6 @@ public class GameMaster : MonoBehaviour
         {
             gameSpeed = Mathf.Min(100, (1f + score / scoreSpeedParam));
             Time.timeScale = gameSpeed;
-            Debug.Log("Timescale now is " + Time.timeScale);
         }
         else if (speedAffector == SpeedAffector.Pause)
         {
