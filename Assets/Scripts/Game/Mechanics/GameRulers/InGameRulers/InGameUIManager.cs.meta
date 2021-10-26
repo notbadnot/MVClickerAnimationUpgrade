@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: c2348df0fc509454a9ca8fac2cdd064d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - hearthImagePrefab: {fileID: 2835775593613428638, guid: 28503c75733c88a4497f4694dbbf31f0, type: 3}
+  - heartPlacer: {fileID: 1194073536031984862, guid: 81504db870028ac46aa110b999a2f494, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
