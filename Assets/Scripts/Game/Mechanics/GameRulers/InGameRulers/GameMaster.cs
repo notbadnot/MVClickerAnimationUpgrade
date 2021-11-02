@@ -47,6 +47,8 @@ public class GameMaster : MonoBehaviour
     private float playTime = 0;
     private float difficultyParam = 1;
 
+    private bool crowdingEnabled;
+
     private GameObject damagingPostProcessor;
     void Start()
     {
@@ -56,7 +58,7 @@ public class GameMaster : MonoBehaviour
         damagingPostProcessor = Instantiate(postProcessingPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         damagingPostProcessor.gameObject.SetActive(false);
     }
-    public void StartGame(GameModel.Difficulty difficulty= GameModel.Difficulty.Medium)
+    public void StartGame(bool crowdingAllowed,GameModel.Difficulty difficulty= GameModel.Difficulty.Medium)
     {
         if (difficulty == GameModel.Difficulty.Easy)
         {
@@ -68,6 +70,7 @@ public class GameMaster : MonoBehaviour
         {
             difficultyParam = 3f;
         }
+        crowdingEnabled = crowdingAllowed;
         gameState = GameState.Playing;
         Time.timeScale = 1;
         health = Defaulthealth;
@@ -119,6 +122,10 @@ public class GameMaster : MonoBehaviour
             spawnedAlien = Instantiate(alienPrefab[spawnNumber], new Vector3(placeToSpawn.x, placeToSpawn.y, 0), Quaternion.identity);
         }
         totalAlienNumber++;
+        if (!crowdingEnabled)
+        {
+            spawnedAlien.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        }
         spawnedAlien.GetComponent<AlienScript>().ImBangedSelfEvent += GameMaster_ImBangedSelfEvent;
         spawnedAlien.GetComponent<AlienScript>().ImDestroidEvent += GameMaster_ImDestroidEvent;
     }
