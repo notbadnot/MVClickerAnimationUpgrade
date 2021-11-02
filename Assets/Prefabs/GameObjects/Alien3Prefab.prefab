@@ -166,4 +166,8 @@ MonoBehaviour:
   score: 200
   GrowingSpeed: {x: 0.0015, y: 0.0015, z: 0}
   Damage: -1
+  teleportPS: {fileID: 6357881284555794918, guid: c17653e9b38a4474fbead88994df3159, type: 3}
+  backTeleportPS: {fileID: 6357881284555794918, guid: 0e6729c1c6437de4580adc50989e51e1, type: 3}
+  smokePS: {fileID: 7423334784574687574, guid: ffa5167a94531304f8cfa2242ca27555, type: 3}
+  firePS: {fileID: 259978818670854712, guid: 49375cdbe5fff9c428a9b2151ae8e2c1, type: 3}
   dead: 0

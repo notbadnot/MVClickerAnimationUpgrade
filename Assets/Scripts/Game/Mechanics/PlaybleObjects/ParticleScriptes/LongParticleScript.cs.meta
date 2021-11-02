@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: be0aabc0762b48743a5690268c423bea
+guid: ff9d0e354fd5d0543882116952853751
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - teleportPS: {fileID: 6357881284555794918, guid: c17653e9b38a4474fbead88994df3159, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
