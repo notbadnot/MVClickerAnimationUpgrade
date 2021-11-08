@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Zenject;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class AlienScript : ShootableObject
@@ -17,6 +18,13 @@ public class AlienScript : ShootableObject
     public bool dead = false; // Мертв ли пришелец
     private Rigidbody2D rigidBody2;
     private Collider2D collider2;
+    private Animator animator;
+
+    private SoundManager _soundManager;
+    [SerializeField] AudioClip inTeleportClip;
+    [SerializeField] AudioClip outTeleportClip;
+    [SerializeField] AudioClip hittedClip;
+    [SerializeField] AudioClip bangedSelfClip;
 
     public event Action<GameObject> ImDestroidEvent;
     public event Action<GameObject> ImBangedSelfEvent;
@@ -24,10 +32,20 @@ public class AlienScript : ShootableObject
     /*При клике на пришельца тот начинает падать и вращатся в случайную сторону, со случайной скоростью
       Пришелец становится мертвым
       Возвращает очки за пришельца*/
+    [Inject]
+    private void Construct(SoundManager soundManager)
+    {
+        _soundManager = soundManager;
+    }
     public override int GetShoted()
     {
         if (!dead)
         {
+            if (animator !=  null)
+            {
+                animator.SetBool("GetHitted", true);
+            }
+            _soundManager.SpawnSoundObject().Play(hittedClip, gameObject.transform.position);
             ImGetShotedEvent?.Invoke(gameObject);
             collider2.isTrigger = true;
             rigidBody2.drag = 0;
@@ -50,6 +68,7 @@ public class AlienScript : ShootableObject
     {
         ImBangedSelfEvent.Invoke(gameObject);
         //gameMaster.ChangeHealth(Damage);
+        _soundManager.SpawnSoundObject().Play(bangedSelfClip, gameObject.transform.position);
         Instantiate(firePS, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 4), Quaternion.identity);
         Destroy(transform.gameObject);
 
@@ -57,16 +76,22 @@ public class AlienScript : ShootableObject
     public void PlayTeleportBack()
     {
         Instantiate(backTeleportPS, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 4), Quaternion.identity);
+        _soundManager.SpawnSoundObject().Play(outTeleportClip, gameObject.transform.position);
     }
     /*Подключение управляющего скрипта
       и Rigidbody2D, увеличение количества пришельцев при появлении */
     void Start()
     {
+        //======================================================
+
+        //=====================================================
         rigidBody2 = GetComponent<Rigidbody2D>();
         //gameMaster = FindObjectOfType<GameMaster>();
         //gameMaster.totalAlienNumber += 1;
         Instantiate(teleportPS, new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 4), Quaternion.identity);
+        _soundManager.SpawnSoundObject().Play(inTeleportClip, gameObject.transform.position);
         collider2 = GetComponent<Collider2D>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     //При уничтожение уменьшается число пришельцев
@@ -75,7 +100,10 @@ public class AlienScript : ShootableObject
         ImDestroidEvent?.Invoke(gameObject);
         //gameMaster.totalAlienNumber -= 1;
     }
-
+    public void BangingSelf()
+    {
+        BangSelf();
+    }
 
     private void FixedUpdate()
     {
@@ -89,7 +117,16 @@ public class AlienScript : ShootableObject
         }
         else
         {
-            BangSelf();
+            if (animator == null)
+            {
+
+
+                BangSelf();
+            }
+            else
+            {
+                animator.SetBool("ReadyToExplode", true);
+            }
         }
 
 

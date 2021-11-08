@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4533715629222063892}
   - component: {fileID: 3577686861239144875}
   - component: {fileID: -526872751352943856}
+  - component: {fileID: -5554031694548791931}
   m_Layer: 0
   m_Name: Alian1Prefab
   m_TagString: Untagged
@@ -107,7 +108,7 @@ PolygonCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   m_Points:
     m_Paths:
     - - {x: 0.35999998, y: -3.26}
@@ -173,3 +174,26 @@ MonoBehaviour:
   smokePS: {fileID: 7423334784574687574, guid: ffa5167a94531304f8cfa2242ca27555, type: 3}
   firePS: {fileID: 259978818670854712, guid: 49375cdbe5fff9c428a9b2151ae8e2c1, type: 3}
   dead: 0
+  inTeleportClip: {fileID: 8300000, guid: 44cc2e6cab1a5f543ae1d4791d887210, type: 3}
+  outTeleportClip: {fileID: 8300000, guid: 4828e3284a0f50f4da52f1852c9fd4ad, type: 3}
+  hittedClip: {fileID: 8300000, guid: 8757621f94537ff4badb986884e0af86, type: 3}
+  bangedSelfClip: {fileID: 8300000, guid: 19532a077d0ad3840bd3ab0e2a01dccd, type: 3}
+--- !u!95 &-5554031694548791931
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524823343931281564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 22bdea76786dc2945a8c98128ad6eabf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

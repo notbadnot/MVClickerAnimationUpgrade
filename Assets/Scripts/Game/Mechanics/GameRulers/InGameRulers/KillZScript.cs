@@ -26,11 +26,17 @@ public class KillZScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-
-        if (collision.gameObject.GetComponentInChildren<AlienScript>().dead) //Если в триггер попадает мертвый пришелец то он уничтожается
+        var triggerAlienInvider = collision.gameObject.GetComponentInChildren<AlienScript>();
+        if (triggerAlienInvider != null)
         {
-            collision.gameObject.GetComponentInChildren<AlienScript>().PlayTeleportBack();
-            Destroy(collision.gameObject);
+
+
+
+            if (collision.gameObject.GetComponentInChildren<AlienScript>().dead) //Если в триггер попадает мертвый пришелец то он уничтожается
+            {
+                collision.gameObject.GetComponentInChildren<AlienScript>().PlayTeleportBack();
+                Destroy(collision.gameObject);
+            }
         }
     }
 

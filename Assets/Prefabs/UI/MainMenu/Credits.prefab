@@ -191,12 +191,13 @@ MonoBehaviour:
     Sprites
     - www.google.com
 
+    SoundPack - https://www.themotionmonkey.co.uk/free-resources/retro-arcade-sounds/
 
 
     Acknowledgment:
 
-    Thanks to gamesphere team: Girshfeld
-    M, Osokin M, Blinov I'
+    Thanks
+    to gamesphere team: Girshfeld M, Osokin M, Blinov I'
 --- !u!1 &4779687177820299011
 GameObject:
   m_ObjectHideFlags: 0

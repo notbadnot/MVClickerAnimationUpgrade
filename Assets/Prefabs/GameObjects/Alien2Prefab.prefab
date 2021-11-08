@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2830047147644385920}
   - component: {fileID: 2686674409308101669}
   - component: {fileID: -2711404476629585781}
+  - component: {fileID: -7628427433798204904}
   m_Layer: 0
   m_Name: Alien2Prefab
   m_TagString: Untagged
@@ -167,3 +168,26 @@ MonoBehaviour:
   smokePS: {fileID: 7423334784574687574, guid: ffa5167a94531304f8cfa2242ca27555, type: 3}
   firePS: {fileID: 259978818670854712, guid: 49375cdbe5fff9c428a9b2151ae8e2c1, type: 3}
   dead: 0
+  inTeleportClip: {fileID: 8300000, guid: 44cc2e6cab1a5f543ae1d4791d887210, type: 3}
+  outTeleportClip: {fileID: 8300000, guid: 4828e3284a0f50f4da52f1852c9fd4ad, type: 3}
+  hittedClip: {fileID: 8300000, guid: 667fc749c9e521b4a93045ed811e4c97, type: 3}
+  bangedSelfClip: {fileID: 8300000, guid: 35f589cf07ad60242a8260338da08d5e, type: 3}
+--- !u!95 &-7628427433798204904
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3004024144455662307}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: f1c9f812c2903ab49a85dfdc6124f6d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputName: {fileID: 4999997083505977659}
+  resultLabel: {fileID: 3350987693921578948}
 --- !u!1 &723661522009600957
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameOverMenuScript : MonoBehaviour
 {
     [SerializeField] InputField inputName;
+    [SerializeField] public Text resultLabel;
     private string inputedPlayerName = "UnknownSoldier";
     public event Action<string> PressedOkEvent;
     // Start is called before the first frame update

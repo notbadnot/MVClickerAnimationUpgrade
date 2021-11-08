@@ -67,6 +67,11 @@ public class GameModel
 
     public bool enableCrowding = true;
 
-
+    public enum GameMode
+    {
+        AlienGame,
+        MoleMiniGame
+    }
+    public GameMode gameMode { get; set; } = GameMode.MoleMiniGame;
 
 }

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Zenject;
 
 public class OutGameUIManager : MonoBehaviour
 {
+
     [SerializeField] GameObject leaderPrefab;
     private GameMaster gameMaster;
     private MMenuStartScript startMenu;
@@ -17,11 +19,22 @@ public class OutGameUIManager : MonoBehaviour
     private MMenuLeaderBoard leaderMenu;
     private GameOverMenuScript gameOverMenu;
     private bool tempCrowding;
+    private bool tempMoleGamemode;
 
     public int tempScore;
     public int tempTime;
 
     public event Action GameStarted;
+
+    [SerializeField] private AudioClip clickClip;
+
+    private SoundManager _soundManager;
+
+    [Inject]
+    private void Construct(SoundManager soundManager)
+    {
+        _soundManager = soundManager;
+    }
 
 
     // Start is called before the first frame update
@@ -59,6 +72,7 @@ public class OutGameUIManager : MonoBehaviour
         UnsubscribeToGameOverMenuEvents();
         gameOverMenu.gameObject.SetActive(false);
         BuildLeaderBoard();
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void SubscribeToLeaderBoardEvents()
@@ -77,6 +91,7 @@ public class OutGameUIManager : MonoBehaviour
         SubscribeToStartEvents();
         UnsubscribeToLeaderBoardEvents();
         leaderMenu.gameObject.SetActive(false);
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void SubscribeToCreditsEvents()
@@ -94,6 +109,7 @@ public class OutGameUIManager : MonoBehaviour
         SubscribeToStartEvents();
         UnsubscribeToCreditsEvents();
         creditsMenu.gameObject.SetActive(false);
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void SubscribeToStartEvents()
@@ -112,6 +128,7 @@ public class OutGameUIManager : MonoBehaviour
         UnsubscribeToStartEvents();
         startMenu.gameObject.SetActive(false);
         BuildLeaderBoard();
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void StartMenu_CreditsEvent()
@@ -120,10 +137,12 @@ public class OutGameUIManager : MonoBehaviour
         SubscribeToCreditsEvents();
         UnsubscribeToStartEvents();
         startMenu.gameObject.SetActive(false);
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void MainMenu_QuitEvent()
     {
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
         QuitHelper.Exit();
     }
 
@@ -143,6 +162,7 @@ public class OutGameUIManager : MonoBehaviour
         settingsMenu.PressAcceptEvent += SettingsMenu_PressAcceptEvent;
         settingsMenu.PressCancelEvent += SettingsMenu_PressCancelEvent;
         settingsMenu.CrowdingChangeEvent += SettingsMenu_CrowdingChangeEvent;
+        settingsMenu.GameModeChangeEvent += SettingsMenu_GameModeChangeEvent;
     }
 
 
@@ -155,11 +175,19 @@ public class OutGameUIManager : MonoBehaviour
         settingsMenu.PressAcceptEvent -= SettingsMenu_PressAcceptEvent;
         settingsMenu.PressCancelEvent -= SettingsMenu_PressCancelEvent;
         settingsMenu.CrowdingChangeEvent -= SettingsMenu_CrowdingChangeEvent;
+        settingsMenu.GameModeChangeEvent -= SettingsMenu_GameModeChangeEvent;
+    }
+    private void SettingsMenu_GameModeChangeEvent(bool obj)
+    {
+        tempMoleGamemode = obj;
+        HighlitedDifficultyButton().Select();
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
     private void SettingsMenu_CrowdingChangeEvent(bool obj)
     {
         tempCrowding = obj;
         HighlitedDifficultyButton().Select();
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void SettingsMenu_PressCancelEvent()
@@ -168,36 +196,50 @@ public class OutGameUIManager : MonoBehaviour
         SubscribeToStartEvents();
         UnsubscribeToSettingsEvents();
         settingsMenu.gameObject.SetActive(false);
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void SettingsMenu_PressAcceptEvent()
     {
         gameModel.difficulty = tempDifficulty;
         gameModel.enableCrowding = tempCrowding;
+        if (tempMoleGamemode)
+        {
+            gameModel.gameMode = GameModel.GameMode.MoleMiniGame;
+        }
+        else
+        {
+            gameModel.gameMode = GameModel.GameMode.AlienGame;
+        }
         startMenu.gameObject.SetActive(true);
         SubscribeToStartEvents();
         UnsubscribeToSettingsEvents();
         settingsMenu.gameObject.SetActive(false);
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void SettingsMenu_PressAlienEvent()
     {
         tempDifficulty = GameModel.Difficulty.Hard;
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void SettingsMenu_PressHumanEvent()
     {
         tempDifficulty = GameModel.Difficulty.Medium;
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void SettingsMenu_PressBabyEvent()
     {
         tempDifficulty = GameModel.Difficulty.Easy;
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
     }
 
     private void MainMenu_StartEvent()
     {
         //gameMaster.StartGame();
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
         UnsubscribeToStartEvents();
         startMenu.gameObject.SetActive(false);
         GameStarted?.Invoke();
@@ -208,7 +250,7 @@ public class OutGameUIManager : MonoBehaviour
         if (gameModel.difficulty == GameModel.Difficulty.Easy) { buttonName = "BabyButton"; }
         else if (gameModel.difficulty == GameModel.Difficulty.Medium) { buttonName = "HumanButton"; }
         else if (gameModel.difficulty == GameModel.Difficulty.Hard) { buttonName = "AlienButton"; }
-        return settingsMenu.gameObject.transform.Find("Panel").Find("ChooseButtons").Find(buttonName).GetComponent<Button>();
+        return settingsMenu.chooseButtons.Find(buttonName).GetComponent<Button>();
     }
 
     private void MainMenu_SettingsEvent()
@@ -217,12 +259,18 @@ public class OutGameUIManager : MonoBehaviour
         SubscribeToSettingsEvents();
         UnsubscribeToStartEvents();
         startMenu.gameObject.SetActive(false);
-        
+
+        _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
+
         HighlitedDifficultyButton().Select();
         tempDifficulty = gameModel.difficulty;
 
         tempCrowding = gameModel.enableCrowding;
-        settingsMenu.gameObject.transform.Find("Panel").Find("Toggle").GetComponent<Toggle>().isOn = tempCrowding;
+
+        tempMoleGamemode = (gameModel.gameMode == GameModel.GameMode.MoleMiniGame);
+
+        settingsMenu.crowdingToogle.isOn = tempCrowding;
+        settingsMenu.gameModeToogle.isOn = tempMoleGamemode;
     }
     private void AddNewLeader(string leaderName, int score, int time)
     {
@@ -303,10 +351,15 @@ public class OutGameUIManager : MonoBehaviour
             difficultyName = "Alien";
         }
         else { difficultyName = "Cheater"; }
-        gameOverMenu.transform.Find("Panel").Find("GameoverCanvas").Find("ResultPlace").Find("ResultLable").GetComponent<Text>().text = ("Your Score: " + score + "   Your Time: " +  time + "   Your Difficulty : " + difficultyName);
+        gameOverMenu.resultLabel.text = ("Your Score: " + score + "   Your Time: " +  time + "   Your Difficulty : " + difficultyName);
         SubscribeToGameOverMenuEvents();
         tempScore = score;
         tempTime = time;
+    }
+    public void ShowStartMenu()
+    {
+        startMenu.gameObject.SetActive(true);
+        SubscribeToStartEvents();
     }
     
 

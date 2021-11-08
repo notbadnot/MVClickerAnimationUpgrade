@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Zenject;
 
 public class AlienSquadScript : MonoBehaviour
 {
@@ -9,13 +10,23 @@ public class AlienSquadScript : MonoBehaviour
     [SerializeField] public GameObject[] alienPrefab;
     private int aliveInSquad;
 
+
     public event Action<GameObject> SquadIsReady;
+
+
+
+    public PrefabFactory _prefabFactory;
+    [Inject]
+    private void Construct( PrefabFactory prefabFactory)
+    {
+        _prefabFactory = prefabFactory;
+    }
     // Start is called before the first frame update
     void Start()
     {
         for (int alienMember = 0; alienMember < aliensInSquad; alienMember++)
         {
-            var newMember = Instantiate(alienPrefab[0], transform);
+            var newMember = _prefabFactory.Spawn(alienPrefab[0], transform);
             newMember.transform.localPosition = new Vector3(Mathf.Cos(Mathf.PI *2 / aliensInSquad *alienMember) * 3, Mathf.Sin(Mathf.PI *2 / aliensInSquad * alienMember)* 3, 0);
             HingeJoint2D hinge = gameObject.AddComponent<HingeJoint2D>();
             newMember.GetComponent<AlienScript>().ImGetShotedEvent += AlienSquadScript_ImGetShotedEvent;

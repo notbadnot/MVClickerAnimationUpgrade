@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Zenject;
 
 public class GameMaster : MonoBehaviour
 {
@@ -18,6 +19,15 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private double heartSpawnChanseParam = 0.9995; // Параметр Шанса появления сердца
     [SerializeField] private GameObject alienSquadPrefab;
     [SerializeField] private GameObject postProcessingPrefab;
+
+    //========================================================================
+    private PrefabFactory _prefabFactory;
+    [Inject]
+    private void Construct(PrefabFactory prefabFactory)
+    {
+        _prefabFactory = prefabFactory;
+    }
+
 
 
     enum GameState // Энумерация для состояний игры
@@ -114,12 +124,13 @@ public class GameMaster : MonoBehaviour
         }
         if (whereSpawn != null)
         {
-            spawnedAlien = Instantiate(alienPrefab[spawnNumber], whereSpawn.Value, Quaternion.identity);
+            spawnedAlien = _prefabFactory.Spawn(alienPrefab[spawnNumber], whereSpawn.Value, Quaternion.identity);
         }
         else
         {
             Vector3 placeToSpawn = mainCam.ScreenToWorldPoint(new Vector3(mainCam.pixelWidth * UnityEngine.Random.Range(0.1f, 0.9f), mainCam.pixelHeight * UnityEngine.Random.Range(0.1f, 0.9f), 0));
-            spawnedAlien = Instantiate(alienPrefab[spawnNumber], new Vector3(placeToSpawn.x, placeToSpawn.y, 0), Quaternion.identity);
+            spawnedAlien = _prefabFactory.Spawn(alienPrefab[spawnNumber], new Vector3(placeToSpawn.x, placeToSpawn.y, 0), Quaternion.identity);
+
         }
         totalAlienNumber++;
         if (!crowdingEnabled)
@@ -136,12 +147,12 @@ public class GameMaster : MonoBehaviour
         alienSquadPrefab.GetComponent<AlienSquadScript>().aliensInSquad = aliensInSpawnedSquad;
         if (whereSpawn != null)
         {
-            spawnedAlienSquad = Instantiate(alienSquadPrefab, whereSpawn.Value, Quaternion.identity);
+            spawnedAlienSquad = _prefabFactory.Spawn(alienSquadPrefab, whereSpawn.Value, Quaternion.identity);
         }
         else
         {
             Vector3 placeToSpawn = mainCam.ScreenToWorldPoint(new Vector3(mainCam.pixelWidth * UnityEngine.Random.Range(0.1f, 0.9f), mainCam.pixelHeight * UnityEngine.Random.Range(0.1f, 0.9f), 0));
-            spawnedAlienSquad = Instantiate(alienSquadPrefab, new Vector3(placeToSpawn.x, placeToSpawn.y, 0), Quaternion.identity);
+            spawnedAlienSquad = _prefabFactory.Spawn(alienSquadPrefab, new Vector3(placeToSpawn.x, placeToSpawn.y, 0), Quaternion.identity);
         }
         totalAlienNumber += aliensInSpawnedSquad;
         spawnedAlienSquad.GetComponent<AlienSquadScript>().SquadIsReady += GameMaster_SquadIsReady;
@@ -177,12 +188,12 @@ public class GameMaster : MonoBehaviour
     {
         if (whereSpawn != null)
         {
-            Instantiate(heartPrefab, whereSpawn.Value, Quaternion.identity);
+            _prefabFactory.Spawn(heartPrefab, whereSpawn.Value, Quaternion.identity);
         }
         else
         {
             Vector3 placeToSpawn = mainCam.ScreenToWorldPoint(new Vector3(mainCam.pixelWidth * UnityEngine.Random.Range(0.1f, 0.9f), mainCam.pixelHeight * UnityEngine.Random.Range(0.1f, 0.9f), 0));
-            Instantiate(heartPrefab, new Vector3(placeToSpawn.x, placeToSpawn.y, 0), Quaternion.identity);
+            _prefabFactory.Spawn(heartPrefab, new Vector3(placeToSpawn.x, placeToSpawn.y, 0), Quaternion.identity);
         }
     }
     /*Функция для изменения здоровья

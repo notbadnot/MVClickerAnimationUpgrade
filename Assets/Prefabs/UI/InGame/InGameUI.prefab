@@ -547,7 +547,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7963181910553715398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,6 +575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9092783356980920471}
   - component: {fileID: 537307642697875867}
+  - component: {fileID: -5406436527041912667}
   m_Layer: 0
   m_Name: InGameUI
   m_TagString: Untagged
@@ -623,6 +624,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &-5406436527041912667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075516467227648725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b463a28819229c94eb7eb2c8b3ac45c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreLabel: {fileID: 5855715847500085978}
+  timeLabel: {fileID: 6715328269104878894}
+  healthLabel: {fileID: 3539181906940562446}
+  textLabelPlace: {fileID: 5815750078547346743}
+  textLable: {fileID: 2421304454238605577}
+  hearthPlace: {fileID: 6495784867501142369}
 --- !u!1 &5815750078547346743
 GameObject:
   m_ObjectHideFlags: 0
