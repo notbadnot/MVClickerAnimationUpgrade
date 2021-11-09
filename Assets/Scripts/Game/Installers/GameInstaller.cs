@@ -10,6 +10,7 @@ public class GameInstaller : MonoInstaller
     public OutGameUIManager OutGameUIManager;
     public override void InstallBindings()
     {
+        Container.Bind<PrefabFactory>().AsSingle();
         Container.Bind<InGameUIScript>().FromInstance(InGameUIScript).AsSingle();
         Container.Bind<InGameUIManager>().FromInstance(InGameUIManager).AsSingle();
         Container.Bind<GameMaster>().FromInstance(GameMaster).AsSingle();
