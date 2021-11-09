@@ -12,12 +12,7 @@ public class GameMoleMaster : MonoBehaviour
     [SerializeField] private float TimeToPlay = 120f;
     [SerializeField] private float chanseMoleToAppear = 0.01f;
 
-    private PrefabFactory _prefabFactory;
-    [Inject]
-    private void Construct(PrefabFactory prefabFactory)
-    {
-        _prefabFactory = prefabFactory;
-    }
+
 
     enum GameState // Энумерация для состояний игры
     {
@@ -42,10 +37,18 @@ public class GameMoleMaster : MonoBehaviour
     private InGameUIManager inGameUI;
     private float leftTime;
     private bool moleIsHere;
+
+    private PrefabFactory _prefabFactory;
+    [Inject]
+    private void Construct(PrefabFactory prefabFactory, InGameUIManager _inGameUIManager)
+    {
+        _prefabFactory = prefabFactory;
+        inGameUI = _inGameUIManager;
+    }
     void Start()
     {
         mainCam = Camera.main;
-        inGameUI = gameObject.GetComponent<InGameUIManager>();
+        //inGameUI = gameObject.GetComponent<InGameUIManager>();
     }
     public void StartGame()
     {

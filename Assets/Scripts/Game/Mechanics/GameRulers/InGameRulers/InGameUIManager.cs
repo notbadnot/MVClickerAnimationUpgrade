@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using Zenject;
 
 public class InGameUIManager : MonoBehaviour
 {
@@ -16,12 +17,16 @@ public class InGameUIManager : MonoBehaviour
     private Text textLable;
     private RectTransform hearthPlace;
 
-
+    [Inject]
+    private void Construct(InGameUIScript _inGameUIScript)
+    {
+        inGameUI = _inGameUIScript;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        inGameUI = FindObjectOfType<InGameUIScript>();
+        //inGameUI = FindObjectOfType<InGameUIScript>();
         /*textLabelPlace = inGameUI.gameObject.transform.Find("Canvas").Find("TextPanel").gameObject;
         textLable = textLabelPlace.transform.Find("TextForTextPanel").GetComponent<Text>();
         scoreLabel = inGameUI.gameObject.transform.Find("Canvas").Find("InfoBar").Find("ScorePanel").Find("ScoreText").GetComponent<Text>();

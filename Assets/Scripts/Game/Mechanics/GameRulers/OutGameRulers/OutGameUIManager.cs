@@ -9,7 +9,6 @@ public class OutGameUIManager : MonoBehaviour
 {
 
     [SerializeField] GameObject leaderPrefab;
-    private GameMaster gameMaster;
     private MMenuStartScript startMenu;
     private MainMenuScript menu;
     private MMenuSettingsScript settingsMenu;
@@ -40,7 +39,6 @@ public class OutGameUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameMaster = FindObjectOfType<GameMaster>();
         startMenu = FindObjectOfType<MMenuStartScript>();
         settingsMenu = FindObjectOfType<MMenuSettingsScript>();
         menu = FindObjectOfType<MainMenuScript>();
@@ -238,7 +236,6 @@ public class OutGameUIManager : MonoBehaviour
 
     private void MainMenu_StartEvent()
     {
-        //gameMaster.StartGame();
         _soundManager.SpawnSoundObject().Play(clickClip, gameObject.transform.position, true);
         UnsubscribeToStartEvents();
         startMenu.gameObject.SetActive(false);

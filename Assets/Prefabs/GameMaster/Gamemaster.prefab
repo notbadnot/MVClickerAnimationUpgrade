@@ -48,12 +48,14 @@ MonoBehaviour:
   - {fileID: 3004024144455662307, guid: 1f251b67ef42277408e4659aae35fa50, type: 3}
   - {fileID: 3524823343931281564, guid: 2bd344e0b9c218f4f8a2d7c640184539, type: 3}
   - {fileID: 7798150097083826596, guid: 8687f09373920a745b77e01a8737ab10, type: 3}
-  heartPrefab: {fileID: 0}
-  maxAliensNumber: 3
-  health: 5
+  heartPrefab: {fileID: 2626717784318805984, guid: abef1c2ae2d996b49acac28909471ccf, type: 3}
+  DefaultmaxAliensNumber: 3
+  Defaulthealth: 5
   pauseKey: 112
   scoreSpeedParam: 10000
   scoreAlienNumberParam: 500
   alienSpawnChanseParam: 0.9
   heartSpawnChanseParam: 0.9995
+  alienSquadPrefab: {fileID: 4669691169990307645, guid: fb7f05c3cf86f7a439dc9e70d68f1541, type: 3}
+  postProcessingPrefab: {fileID: 6733511830513086723, guid: 1f1202f4dc68e944daec59ec80fd0ca5, type: 3}
   totalAlienNumber: 0

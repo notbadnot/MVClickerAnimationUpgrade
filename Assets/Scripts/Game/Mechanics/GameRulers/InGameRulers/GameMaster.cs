@@ -21,12 +21,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private GameObject postProcessingPrefab;
 
     //========================================================================
-    private PrefabFactory _prefabFactory;
-    [Inject]
-    private void Construct(PrefabFactory prefabFactory)
-    {
-        _prefabFactory = prefabFactory;
-    }
+
 
 
 
@@ -60,11 +55,19 @@ public class GameMaster : MonoBehaviour
     private bool crowdingEnabled;
 
     private GameObject damagingPostProcessor;
+
+    private PrefabFactory _prefabFactory;
+    [Inject]
+    private void Construct(PrefabFactory prefabFactory, InGameUIManager _inGameUIManager)
+    {
+        _prefabFactory = prefabFactory;
+        inGameUI = _inGameUIManager;
+    }
     void Start()
     {
         mainCam = Camera.main;
         Time.timeScale = 0;
-        inGameUI = gameObject.GetComponent<InGameUIManager>();
+        //inGameUI = gameObject.GetComponent<InGameUIManager>();
         damagingPostProcessor = Instantiate(postProcessingPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         damagingPostProcessor.gameObject.SetActive(false);
     }
