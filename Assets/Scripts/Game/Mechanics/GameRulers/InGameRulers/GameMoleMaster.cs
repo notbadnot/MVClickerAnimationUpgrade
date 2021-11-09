@@ -7,14 +7,14 @@ using System;
 public class GameMoleMaster : MonoBehaviour
 {
     [SerializeField] private Camera mainCam;
-    [SerializeField] private GameObject molePrefab; // Несколько префабов для инстанцирования пришельцев
-    [SerializeField] private KeyCode pauseKey = KeyCode.P; // Настройка для кнопки паузы
+    [SerializeField] private GameObject molePrefab; 
+    [SerializeField] private KeyCode pauseKey = KeyCode.P; 
     [SerializeField] private float TimeToPlay = 120f;
     [SerializeField] private float chanseMoleToAppear = 0.01f;
 
 
 
-    enum GameState // Энумерация для состояний игры
+    enum GameState 
     {
         Playing,
         Pause,
@@ -22,7 +22,7 @@ public class GameMoleMaster : MonoBehaviour
         NotinGame
     }
 
-    enum SpeedAffector // Энумерация необходимая для регулирования скорости игры
+    enum SpeedAffector 
     {
         Score,
         Pause,
@@ -31,9 +31,9 @@ public class GameMoleMaster : MonoBehaviour
 
     public event Action gameOvered;
 
-    private GameState gameState = GameState.NotinGame; //Текущее состояние игры (в процессе , пауза, проигрышь)
-    private int score = 0; // Очки
-    private float gameSpeed = 1; // Скорость игры
+    private GameState gameState = GameState.NotinGame; 
+    private int score = 0;
+    private float gameSpeed = 1;
     private InGameUIManager inGameUI;
     private float leftTime;
     private bool moleIsHere;
@@ -48,7 +48,6 @@ public class GameMoleMaster : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
-        //inGameUI = gameObject.GetComponent<InGameUIManager>();
     }
     public void StartGame()
     {
@@ -65,7 +64,6 @@ public class GameMoleMaster : MonoBehaviour
     private void Shoot()
     {
         RaycastHit2D hit = Physics2D.Raycast(mainCam.ScreenToWorldPoint(Input.mousePosition), mainCam.transform.forward);
-        Debug.Log("hit");
         if (hit.collider != null)
         {
             GameObject hitGameObj = hit.collider.gameObject;
@@ -172,18 +170,17 @@ public class GameMoleMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameState != GameState.GameOver && gameState != GameState.NotinGame) //Если игра не проигранна
+        if (gameState != GameState.GameOver && gameState != GameState.NotinGame) 
         {
-            if (Input.GetKeyDown(pauseKey)) //Постановка и снятие с паузы
+            if (Input.GetKeyDown(pauseKey)) 
             {
                 ChangeGameSpeed();
             }
-            if (gameState == GameState.Playing) //Если игра в состоянии игры
+            if (gameState == GameState.Playing) 
             {
-                if (Input.GetMouseButtonDown(0)) // Клик при ЛКМ
+                if (Input.GetMouseButtonDown(0)) 
                 {
                     Shoot();
-                    Debug.Log("afterShoot");
                 }
                 if (!moleIsHere)
                 {

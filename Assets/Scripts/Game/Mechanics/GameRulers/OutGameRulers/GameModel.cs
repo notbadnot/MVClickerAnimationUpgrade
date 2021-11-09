@@ -72,6 +72,6 @@ public class GameModel
         AlienGame,
         MoleMiniGame
     }
-    public GameMode gameMode { get; set; } = GameMode.MoleMiniGame;
+    public GameMode gameMode { get; set; } = GameMode.AlienGame;
 
 }

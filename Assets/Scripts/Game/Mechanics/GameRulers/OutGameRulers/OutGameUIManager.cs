@@ -50,7 +50,6 @@ public class OutGameUIManager : MonoBehaviour
         creditsMenu.gameObject.SetActive(false);
         leaderMenu.gameObject.SetActive(false);
         gameOverMenu.gameObject.SetActive(false);
-        SubscribeToGameOverMenuEvents(); //remove
 
     }
     private void SubscribeToGameOverMenuEvents()
@@ -64,7 +63,7 @@ public class OutGameUIManager : MonoBehaviour
 
     private void GameOverMenu_PressedOkEvent(string gettedName)
     {
-        AddNewLeader(gettedName, tempScore, tempTime); //remove
+        AddNewLeader(gettedName, tempScore, tempTime); 
         leaderMenu.gameObject.SetActive(true);
         SubscribeToLeaderBoardEvents();
         UnsubscribeToGameOverMenuEvents();

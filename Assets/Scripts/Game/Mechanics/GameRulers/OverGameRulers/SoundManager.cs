@@ -8,10 +8,8 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     public SoundObject SpawnSoundObject()
     {
-        Debug.Log("Sound manager is working");
         GameObject soundObject = Instantiate(soundObjectPrefab);
         Object.DontDestroyOnLoad(soundObject);
-        Debug.Log("Sound manager is working 2");
         return soundObject.GetComponent<SoundObject>();
     }
 

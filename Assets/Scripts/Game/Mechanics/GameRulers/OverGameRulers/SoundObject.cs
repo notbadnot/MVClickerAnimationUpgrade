@@ -7,7 +7,6 @@ public class SoundObject : MonoBehaviour
     private AudioSource audioSource;
     private void Awake()
     {
-        Debug.Log("Sound object started");
         audioSource = gameObject.GetComponent<AudioSource>();
     }
     public void Play(AudioClip audioClip, Vector3 position, bool is2D = false, bool looping = false)

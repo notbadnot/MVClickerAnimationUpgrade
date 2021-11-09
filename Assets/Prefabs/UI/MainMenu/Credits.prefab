@@ -497,6 +497,8 @@ GameObject:
   - component: {fileID: 421237049273712554}
   - component: {fileID: 3098842800134525115}
   - component: {fileID: 6639372033586548814}
+  - component: {fileID: -9006943323724548596}
+  - component: {fileID: -8806740175278196694}
   m_Layer: 0
   m_Name: Credits
   m_TagString: Untagged
@@ -557,6 +559,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f75e4059940904b93a39356185dd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &-9006943323724548596
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654911558767341064}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-8806740175278196694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654911558767341064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b432c716c0aee34419a0b73a5799b2fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
+  maskable: {fileID: 0}
 --- !u!1 &8426707572009846368
 GameObject:
   m_ObjectHideFlags: 0
