@@ -9,7 +9,7 @@ namespace Installers
 
         public override void InstallBindings()
         {
-            Container.Bind<PrefabFactory>().AsSingle();
+            
 
             Container.Bind<SoundManager>().FromInstance(SoundManager).AsSingle().NonLazy();
         }
