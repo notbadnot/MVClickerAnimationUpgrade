@@ -66,8 +66,6 @@ public class GameMaster : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
-        Time.timeScale = 0;
-        //inGameUI = gameObject.GetComponent<InGameUIManager>();
         damagingPostProcessor = Instantiate(postProcessingPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         damagingPostProcessor.gameObject.SetActive(false);
     }

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4031221728339638029}
   - component: {fileID: -1982853176100025543}
   - component: {fileID: 8679120865039308527}
+  - component: {fileID: -4368719794394688957}
+  - component: {fileID: 2454067815524164168}
   m_Layer: 0
   m_Name: LeaderBoard
   m_TagString: Untagged
@@ -89,6 +91,32 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-4368719794394688957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645805627058871019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b432c716c0aee34419a0b73a5799b2fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
+  maskable: {fileID: 0}
+--- !u!225 &2454067815524164168
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645805627058871019}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5114630339750986487
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,10 +19,7 @@ public class GameCore : MonoBehaviour
     }
     void Start()
     {
-        /*gameMaster = FindObjectOfType<GameMaster>();
-        gameMoleMaster = FindObjectOfType<GameMoleMaster>();*/
         gameModel = new GameModel();
-        //outGameUI = FindObjectOfType<OutGameUIManager>();
         outGameUI.gameModel = gameModel;
         gameMaster.gameOvered += GameMaster_gameOvered;
         outGameUI.GameStarted += OutGameUI_GameStarted;
@@ -32,6 +29,7 @@ public class GameCore : MonoBehaviour
 
     private void GameMoleMaster_gameOvered()
     {
+        Time.timeScale = 1;
         outGameUI.SwitchMenu(true);
         gameMaster.TelUImanagerToSwitchInGameMenu(false);
         outGameUI.ShowStartMenu();
@@ -54,9 +52,11 @@ public class GameCore : MonoBehaviour
 
     private void GameMaster_gameOvered(int score, int time)
     {
+        Time.timeScale = 1;
         outGameUI.SwitchMenu(true);
         gameMaster.TelUImanagerToSwitchInGameMenu(false);
         outGameUI.ShowGameOverMenu(score, time);
+        
     }
 
     // Update is called once per frame

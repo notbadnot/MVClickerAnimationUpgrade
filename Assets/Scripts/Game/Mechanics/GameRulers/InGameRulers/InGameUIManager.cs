@@ -26,13 +26,6 @@ public class InGameUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //inGameUI = FindObjectOfType<InGameUIScript>();
-        /*textLabelPlace = inGameUI.gameObject.transform.Find("Canvas").Find("TextPanel").gameObject;
-        textLable = textLabelPlace.transform.Find("TextForTextPanel").GetComponent<Text>();
-        scoreLabel = inGameUI.gameObject.transform.Find("Canvas").Find("InfoBar").Find("ScorePanel").Find("ScoreText").GetComponent<Text>();
-        healthLabel = inGameUI.gameObject.transform.Find("Canvas").Find("InfoBar").Find("HealthPanel").Find("HealthTextPlace").Find("HealthText").GetComponent<Text>();
-        timeLabel = inGameUI.gameObject.transform.Find("Canvas").Find("InfoBar").Find("TimePanel").Find("TimeText").GetComponent<Text>();
-        hearthPlace = inGameUI.gameObject.transform.Find("Canvas").Find("InfoBar").Find("HealthPanel").Find("HeartPlace").GetComponent<RectTransform>();*/
         textLabelPlace = inGameUI.textLabelPlace;
         textLable = inGameUI.textLable;
         scoreLabel = inGameUI.scoreLabel;

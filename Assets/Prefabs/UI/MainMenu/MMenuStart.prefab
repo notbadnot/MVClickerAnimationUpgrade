@@ -954,6 +954,8 @@ GameObject:
   - component: {fileID: 5482227031317627276}
   - component: {fileID: 114445685299468236}
   - component: {fileID: -6369909647407612393}
+  - component: {fileID: 2598569889080696200}
+  - component: {fileID: 4646207291190889535}
   m_Layer: 0
   m_Name: MMenuStart
   m_TagString: Untagged
@@ -1014,6 +1016,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b8b7cd67daf6847bc282236d7af901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2598569889080696200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961242830836274497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b432c716c0aee34419a0b73a5799b2fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
+  maskable: {fileID: 6399439819409695449}
+--- !u!225 &4646207291190889535
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961242830836274497}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5917194431686167947
 GameObject:
   m_ObjectHideFlags: 0

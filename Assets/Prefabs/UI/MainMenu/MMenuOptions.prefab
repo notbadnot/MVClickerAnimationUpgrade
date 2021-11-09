@@ -873,6 +873,8 @@ GameObject:
   - component: {fileID: 7473915303885082700}
   - component: {fileID: 2280914010036410378}
   - component: {fileID: -4256048064570702667}
+  - component: {fileID: -2087758741086919000}
+  - component: {fileID: 2147012962126008300}
   m_Layer: 0
   m_Name: MMenuOptions
   m_TagString: Untagged
@@ -936,6 +938,32 @@ MonoBehaviour:
   crowdingToogle: {fileID: 4669281593038823365}
   gameModeToogle: {fileID: 783224687758519379}
   chooseButtons: {fileID: 1542805652122691260}
+--- !u!225 &-2087758741086919000
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519651624630349649}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2147012962126008300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519651624630349649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b432c716c0aee34419a0b73a5799b2fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
+  maskable: {fileID: 0}
 --- !u!1 &2556442741983201732
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,7 +53,6 @@ public class MoleScript : ShootableObject
             StopCoroutine(growingCoroutine);
             StopCoroutine(Waiting());
             StartCoroutine(GoingDown());
-            Debug.Log("OhNoImGetShoted");
             return base.GetShoted();
         }
         return 0;
@@ -94,7 +93,6 @@ public class MoleScript : ShootableObject
         {
             legthCounter += 0.01f;
             rigidBody2.MovePosition(rigidBody2.position + Vector2.up * 0.1f);
-            Debug.Log("Going UP");
             yield return new WaitForFixedUpdate();
         }
         StartCoroutine(Waiting());
@@ -122,7 +120,6 @@ public class MoleScript : ShootableObject
         while (legthCounter > 0)
         {
             legthCounter -= 0.01f;
-            Debug.Log("Going Down");
             rigidBody2.MovePosition(rigidBody2.position - Vector2.up * 0.1f);
             yield return new WaitForFixedUpdate();
         }
